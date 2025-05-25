@@ -87,6 +87,7 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             border: 2px solid rgba(52, 152, 219, 0.3);
             backdrop-filter: blur(4px);
+            z-index: 1;
         }
 
         .tile:hover {
@@ -123,12 +124,15 @@
             min-width: 260px;
             max-height: 400px;
             overflow-y: auto;
-            z-index: 2;
+            z-index: 3;
+            pointer-events: none;
         }
 
         .tile:hover .menu {
             opacity: 1;
             transform: translateY(-50%) translateX(0);
+            pointer-events: auto;
+            transition-delay: 0.1s;
         }
 
         .menu-item {
@@ -141,6 +145,7 @@
             transform: translateX(20px);
             opacity: 0;
             white-space: nowrap;
+            pointer-events: auto;
         }
 
         .tile:hover .menu-item {
@@ -187,10 +192,6 @@
         }
 
         @media (max-width: 768px) {
-            body {
-                overflow-x: auto;
-            }
-            
             .tile-container {
                 padding: 1rem;
                 justify-content: center;
@@ -205,18 +206,31 @@
             .tile {
                 width: 100%;
                 height: 100px;
+                margin-bottom: 1rem;
             }
             
             .menu {
+                position: static;
                 left: 0;
-                top: 100%;
+                top: auto;
                 min-width: 100%;
-                transform: translateY(10px);
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+                transform: none;
+                box-shadow: none;
+                max-height: 0;
+                overflow: hidden;
+                opacity: 1;
+                transition: all 0.3s ease;
+                pointer-events: none;
+                background-color: rgba(44, 62, 80, 0.9);
+                margin-top: 0.5rem;
+                padding: 0;
+                z-index: 2;
             }
             
-            .tile:hover .menu {
-                transform: translateY(0);
+            .tile.active .menu {
+                max-height: 500px;
+                padding: 1rem;
+                pointer-events: auto;
             }
             
             .menu-item {
@@ -224,10 +238,20 @@
                 font-size: 0.85rem;
                 padding: 0.7rem;
                 transform: translateY(10px) !important;
+                opacity: 1 !important;
+                margin: 0.25rem 0;
             }
             
-            .tile:hover .menu-item {
+            .tile.active .menu-item {
                 transform: translateY(0) !important;
+            }
+
+            .tile:hover {
+                transform: none;
+            }
+            
+            .tile.active {
+                z-index: 4;
             }
         }
     </style>
@@ -294,5 +318,42 @@
             کلیه حقوق مادی و معنوی این سامانه متعلق به دفتر ارزیابی و پایش حوزه هنری است © ۱۴۰۳
         </div>
     </footer>
+
+    <script>
+        // مدیریت نسخه موبایل
+        document.querySelectorAll('.tile').forEach(tile => {
+            tile.addEventListener('click', (e) => {
+                if(window.innerWidth <= 768) {
+                    const isActive = tile.classList.contains('active');
+                    document.querySelectorAll('.tile').forEach(t => t.classList.remove('active'));
+                    if(!isActive) {
+                        tile.classList.add('active');
+                    }
+                    e.stopPropagation();
+                }
+            });
+        });
+
+        // بستن منو با کلیک خارج از آن
+        document.addEventListener('click', (e) => {
+            if(window.innerWidth <= 768) {
+                if(!e.target.closest('.tile')) {
+                    document.querySelectorAll('.tile').forEach(t => {
+                        t.classList.remove('active');
+                    });
+                }
+            }
+        });
+
+        // مدیریت hover برای نسخه دسکتاپ
+        document.querySelectorAll('.tile').forEach(tile => {
+            tile.addEventListener('mouseenter', () => {
+                if(window.innerWidth > 768) {
+                    document.querySelectorAll('.tile').forEach(t => t.style.zIndex = 1);
+                    tile.style.zIndex = 2;
+                }
+            });
+        });
+    </script>
 </body>
 </html>
