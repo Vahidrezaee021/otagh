@@ -190,8 +190,7 @@
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         box-shadow: -4px 0 12px rgba(0, 0, 0, 0.2);
         min-width: 240px;
-        max-height: 320px;
-        overflow-y: auto;
+        overflow-y: visible; /* تغییر اصلی */
         z-index: 3;
         pointer-events: none;
         border: 1px solid #cf9c51;
@@ -307,6 +306,8 @@
           width: 90%;
           right: 5%;
           top: calc(100% + 8px);
+          max-height: 50vh; /* محدودیت ارتفاع برای موبایل */
+          overflow-y: auto; /* اسکرول فقط در موبایل */
         }
       }
     </style>
