@@ -1,410 +1,428 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>سامانه جامع اتاق وضعیت حوزه هنری انقلاب اسلامی</title>
     <style>
-      @font-face {
-        font-family: "Vazir";
-        src: url("fonts/Vazir-FD-WOL.woff") format("woff");
-        font-weight: normal;
-        font-style: normal;
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Vazir", sans-serif !important;
-      }
-
-      body {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-          url("img/12345.JPG") center/cover;
-        cursor: default;
-        overflow-x: hidden;
-      }
-
-      .header {
-        background-color: rgba(44, 62, 80, 0.9);
-        color: white;
-        padding: 1rem 2rem;
-        display: flex;
-        align-items: center;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        gap: 1rem;
-      }
-
-      .logo-title-wrapper {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-      }
-
-      .logo {
-        width: 45px;
-        height: 45px;
-        background-color: #3498db;
-        border-radius: 50%;
-        flex-shrink: 0;
-      }
-
-      .header h1 {
-        margin: 0;
-        font-weight: normal;
-        font-size: 1.3rem;
-        white-space: nowrap;
-      }
-
-      .tile-container {
-        flex: 1;
-        display: flex;
-        justify-content: flex-start;
-        align-items: flex-start;
-        padding: 2rem;
-        margin: 4rem 0 0 3rem;
-      }
-
-      .tiles-wrapper {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        width: 240px;
-        margin-right: 2rem;
-      }
-
-      .tile {
-        width: 240px;
-        height: 110px;
-        background-color: rgba(0, 0, 0, 0.8);
-        border-radius: 12px;
-        cursor: pointer;
-        position: relative;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-        border: 2px solid #cf9c51;
-        backdrop-filter: blur(6px);
-        z-index: 1;
-      }
-
-      .tile:hover {
-        transform: translateX(10px);
-        box-shadow: 0 8px 24px rgba(255, 215, 0, 0.3);
-      }
-
-      .tile::after {
-        content: "";
-        position: absolute;
-        top: -2px;
-        left: -2px;
-        right: -2px;
-        bottom: -2px;
-        border-radius: 12px;
-        border: 2px solid transparent;
-        animation: borderGlow 2s infinite;
-      }
-
-      @keyframes borderGlow {
-        0% {
-          border-color: #cf9c51;
+        @font-face {
+            font-family: "Vazir";
+            src: url("fonts/Vazir-FD-WOL.woff") format("woff");
+            font-weight: normal;
+            font-style: normal;
         }
-        50% {
-          border-color: rgba(255, 215, 0, 0.3);
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Vazir", sans-serif !important;
         }
-        100% {
-          border-color: #cf9c51;
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+            cursor: default;
+            overflow-x: hidden;
+            position: relative;
         }
-      }
 
-      .tile-text {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        color: white;
-        font-size: 1.1rem;
-        width: 100%;
-        padding: 15px;
-        text-align: center;
-        z-index: 2;
-      }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("img/12345.JPG") center/cover;
+            transform: scale(1.08);
+            z-index: -1;
+            animation: backgroundZoom 20s infinite alternate;
+            filter: brightness(0.8);
+        }
 
-      .menu {
-        position: absolute;
-        right: calc(100% + 20px);
-        top: 50%;
-        transform: translateY(-50%) translateX(20px);
-        background-color: rgba(44, 62, 80, 0.95);
-        border-radius: 12px;
-        padding: 1rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.8rem;
-        opacity: 0;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: -4px 0 12px rgba(0, 0, 0, 0.2);
-        min-width: 260px;
-        max-height: 400px;
-        overflow-y: auto;
-        z-index: 3;
-        pointer-events: none;
-      }
+        @keyframes backgroundZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.15); }
+        }
 
-      .tile:nth-child(2) .menu {
-        overflow-y: hidden;
-        max-height: 500px;
-      }
+        .header {
+            background-color: rgba(44, 62, 80, 0.9);
+            color: white;
+            padding: 1.5rem 8rem;
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid #CF9C51;
+            position: relative;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
 
-      .tile:hover .menu {
-        opacity: 1;
-        transform: translateY(-50%) translateX(0);
-        pointer-events: auto;
-        transition-delay: 0.1s;
-      }
+        .logo-title-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
 
-      .menu-item {
-        padding: 0.9rem 1.2rem;
-        color: white;
-        background-color: rgba(255, 255, 255, 0.1);
-        border-radius: 8px;
-        transition: all 0.2s ease;
-        font-size: 0.9rem;
-        transform: translateX(-20px);
-        opacity: 0;
-        white-space: nowrap;
-        pointer-events: auto;
-      }
+        .logo {
+            width: 65px;
+            height: 65px;
+            background-color: #3498db;
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-left: 3rem;
+            border: 2px solid #CF9C51;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
 
-      .tile:hover .menu-item {
-        transform: translateX(0);
-        opacity: 1;
-        transition-delay: calc(0.05s * var(--i));
-      }
+        .header h1 {
+            margin: 0;
+            font-weight: normal;
+            font-size: 1.4rem;
+            white-space: nowrap;
+            flex-grow: 1;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            color: #f4f4f4;
+        }
 
-      .menu-item:hover {
-        background-color: rgba(255, 255, 255, 0.2);
-        transform: translateX(-5px);
-      }
-
-      .footer {
-        background-color: rgba(44, 62, 80, 0.9);
-        color: white;
-        padding: 1rem;
-        text-align: center;
-        margin-top: auto;
-      }
-
-      .footer-links {
-        display: flex;
-        justify-content: center;
-        gap: 1.5rem;
-        margin-bottom: 0.8rem;
-      }
-
-      .footer-links a {
-        color: white;
-        text-decoration: none;
-        transition: color 0.3s ease;
-        font-size: 0.9rem;
-      }
-
-      .footer-links a:hover {
-        color: #CF9C51;
-      }
-
-      .copyright {
-        font-size: 0.7rem;
-        opacity: 0.8;
-        margin-top: 0.8rem;
-      }
-
-      @media (max-width: 768px) {
         .tile-container {
-          padding: 1rem;
-          justify-content: center;
-          margin: 2rem 0 0 0;
+            flex: 1;
+            display: flex;
+            justify-content: flex-start;
+            padding: 4rem;
+            margin: 2rem 8rem 0 8rem;
+            max-width: 1280px;
         }
 
         .tiles-wrapper {
-          width: 90%;
-          max-width: 300px;
-          margin-right: 0;
-          gap: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 3.5rem;
+            width: 100%;
         }
 
         .tile {
-          width: 100%;
-          height: 100px;
-          margin-bottom: 0;
-        }
-
-        .menu {
-          position: absolute;
-          top: calc(100% + 10px);
-          right: 0;
-          width: 100%;
-          max-height: 0;
-          overflow: hidden;
-          opacity: 1;
-          transition: all 0.3s ease;
-          pointer-events: none;
-          background-color: rgba(44, 62, 80, 0.95);
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-          padding: 0;
-          z-index: 4;
-          transform: none !important;
-        }
-
-        .tile.active .menu {
-          max-height: 500px;
-          padding: 1rem;
-          pointer-events: auto;
-        }
-
-        .tile:nth-child(2) .menu {
-          max-height: 600px;
-        }
-
-        .menu-item {
-          white-space: normal;
-          font-size: 0.85rem;
-          padding: 0.7rem;
-          transform: translateY(10px) !important;
-          opacity: 1 !important;
-          margin: 0.25rem 0;
-          transition: none !important;
-        }
-
-        .tile.active .menu-item {
-          transform: translateY(0) !important;
+            width: 300px;
+            height: 140px;
+            background-color: rgba(0, 0, 0, 0.85);
+            border-radius: 15px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            border: 2px solid #CF9C51;
+            backdrop-filter: blur(8px);
+            z-index: 1;
         }
 
         .tile:hover {
-          transform: none;
+            transform: translateX(15px);
+            box-shadow: 0 8px 24px rgba(207, 156, 81, 0.4);
         }
 
-        .tile.active {
-          z-index: 5;
+        .tile::after {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 15px;
+            border: 2px solid transparent;
+            animation: borderGlow 2s infinite;
         }
-      }
+
+        @keyframes borderGlow {
+            0% { border-color: #CF9C51; }
+            50% { border-color: rgba(207, 156, 81, 0.4); }
+            100% { border-color: #CF9C51; }
+        }
+
+        .tile-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 1.25rem;
+            width: 100%;
+            padding: 15px;
+            text-align: center;
+            z-index: 2;
+            letter-spacing: 0.5px;
+        }
+
+        .menu {
+            position: absolute;
+            right: calc(100% + 25px);
+            top: 50%;
+            transform: translateY(-50%) translateX(25px);
+            background-color: rgba(44, 62, 80, 0.95);
+            border-radius: 15px;
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: -4px 0 12px rgba(0, 0, 0, 0.2);
+            min-width: 300px;
+            max-height: 400px;
+            overflow-y: auto;
+            z-index: 3;
+            pointer-events: none;
+            border: 1px solid #CF9C51;
+        }
+
+        .tile:nth-child(2) .menu {
+            max-height: 500px;
+        }
+
+        .tile:hover .menu {
+            opacity: 1;
+            transform: translateY(-50%) translateX(0);
+            pointer-events: auto;
+            transition-delay: 0.1s;
+        }
+
+        .menu-item {
+            padding: 1rem 1.5rem;
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+            transform: translateX(-25px);
+            opacity: 0;
+            white-space: nowrap;
+            pointer-events: auto;
+            border: 1px solid rgba(207, 156, 81, 0.3);
+        }
+
+        .tile:hover .menu-item {
+            transform: translateX(0);
+            opacity: 1;
+            transition-delay: calc(0.05s * var(--i));
+        }
+
+        .menu-item:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateX(-5px);
+            border-color: #CF9C51;
+        }
+
+        .footer {
+            background-color: rgba(44, 62, 80, 0.9);
+            color: white;
+            padding: 1.2rem;
+            text-align: center;
+            margin-top: auto;
+            border-top: 2px solid #CF9C51;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            right: 0;
+            width: 0;
+            height: 1.5px;
+            background: #CF9C51;
+            transition: width 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #CF9C51;
+        }
+
+        .footer-links a:hover::after {
+            width: 100%;
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            margin-top: 1rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            body::before {
+                transform: scale(1.2);
+                animation: none;
+            }
+
+            .header {
+                padding: 1rem 2rem;
+                border-bottom-width: 1.5px;
+            }
+
+            .logo-title-wrapper {
+                max-width: 100%;
+                gap: 1rem;
+            }
+
+            .logo {
+                width: 50px;
+                height: 50px;
+                margin-left: 1rem;
+                border-width: 1.5px;
+            }
+
+            .header h1 {
+                font-size: 1.1rem;
+            }
+
+            .tile-container {
+                padding: 2rem;
+                margin: 1rem 2rem 0 2rem;
+            }
+
+            .tile {
+                width: 100%;
+                height: 110px;
+            }
+
+            .menu {
+                width: 100%;
+                right: 0;
+                top: calc(100% + 15px);
+                min-width: unset;
+            }
+
+            .footer {
+                border-top-width: 1.5px;
+            }
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <header class="header">
-      <div class="logo-title-wrapper">
-        <div class="logo"></div>
-        <h1>سامانه جامع اتاق وضعیت حوزه هنری انقلاب اسلامی</h1>
-      </div>
+        <div class="logo-title-wrapper">
+            <div class="logo"></div>
+            <h1>سامانه جامع اتاق وضعیت حوزه هنری انقلاب اسلامی</h1>
+        </div>
     </header>
 
     <div class="tile-container">
-      <div class="tiles-wrapper">
-        <div class="tile">
-          <div class="tile-text">مدیریت اطلاعات</div>
-          <div class="menu">
-            <div class="menu-item" style="--i: 0">
-              سیماح (سامانه یکپارچه مدیریت اطلاعات حوزه هنری)
+        <div class="tiles-wrapper">
+            <div class="tile">
+                <div class="tile-text">مدیریت اطلاعات</div>
+                <div class="menu">
+                    <div class="menu-item" style="--i: 0">
+                        سیماح (سامانه یکپارچه مدیریت اطلاعات حوزه هنری)
+                    </div>
+                    <div class="menu-item" style="--i: 1">نمای آماری (داشبورد)</div>
+                    <div class="menu-item" style="--i: 2">
+                        مخزن استعدادهای حوزه هنری
+                    </div>
+                    <div class="menu-item" style="--i: 3">
+                        آرشیو گزارش های حوزه هنری
+                    </div>
+                </div>
             </div>
-            <div class="menu-item" style="--i: 1">نمای آماری (داشبورد)</div>
-            <div class="menu-item" style="--i: 2">
-              مخزن استعدادهای حوزه هنری
-            </div>
-            <div class="menu-item" style="--i: 3">
-              آرشیو گزارش های حوزه هنری
-            </div>
-          </div>
-        </div>
 
-        <div class="tile">
-          <div class="tile-text">مدیریت محتوا و بروندادها</div>
-          <div class="menu">
-            <div class="menu-item" style="--i: 0">
-              آرشیو اسناد سیاستی و راهبردی حوزه هنری
+            <div class="tile">
+                <div class="tile-text">مدیریت محتوا و بروندادها</div>
+                <div class="menu">
+                    <div class="menu-item" style="--i: 0">
+                        آرشیو اسناد سیاستی و راهبردی حوزه هنری
+                    </div>
+                    <div class="menu-item" style="--i: 1">
+                        مهرآوین (آرشیو محصولات رایگان حوزه هنری)
+                    </div>
+                    <div class="menu-item" style="--i: 2">
+                        آرشیو دیجیتال تولیدات و محصولات حوزه هنری
+                    </div>
+                    <div class="menu-item" style="--i: 3">
+                        آرشیو دیجیتال تولیدات و محصولات حوزه هنری
+                    </div>
+                    <div class="menu-item" style="--i: 4">
+                        ویکی حوزه (دانشنامه برخط حوزه هنری)
+                    </div>
+                    <div class="menu-item" style="--i: 5">
+                        روند نما (تاریخ خطی حوزه هنری)
+                    </div>
+                </div>
             </div>
-            <div class="menu-item" style="--i: 1">
-              مهرآوین (آرشیو محصولات رایگان حوزه هنری)
-            </div>
-            <div class="menu-item" style="--i: 2">
-              آرشیو دیجیتال تولیدات و محصولات حوزه هنری
-            </div>
-            <div class="menu-item" style="--i: 3">
-              آرشیو دیجیتال تولیدات و محصولات حوزه هنری
-            </div>
-            <div class="menu-item" style="--i: 4">
-              ویکی حوزه (دانشنامه برخط حوزه هنری)
-            </div>
-            <div class="menu-item" style="--i: 5">
-              روند نما (تاریخ خطی حوزه هنری)
-            </div>
-          </div>
-        </div>
 
-        <div class="tile">
-          <div class="tile-text">مدیریت مالی، اداری و پشتیبانی</div>
-          <div class="menu">
-            <div class="menu-item" style="--i: 0">
-              راهکاران سیستم (سامانه مالی، اداری و پشتیبانی)
+            <div class="tile">
+                <div class="tile-text">مدیریت مالی، اداری و پشتیبانی</div>
+                <div class="menu">
+                    <div class="menu-item" style="--i: 0">
+                        راهکاران سیستم (سامانه مالی، اداری و پشتیبانی)
+                    </div>
+                    <div class="menu-item" style="--i: 1">
+                        سمین (سامانه قراردادهای حوزه هنری)
+                    </div>
+                </div>
             </div>
-            <div class="menu-item" style="--i: 1">
-              سمین (سامانه قراردادهای حوزه هنری)
-            </div>
-          </div>
         </div>
-      </div>
     </div>
 
     <footer class="footer">
-      <div class="footer-links">
-        <a href="#">وبلاگ</a>
-        <a href="#">درباره ما</a>
-        <a href="#">تماس با ما</a>
-      </div>
-      <div class="copyright">
-        کلیه حقوق مادی و معنوی این سامانه متعلق به دفتر ارزیابی و پایش حوزه هنری
-        است © ۱۴۰۳
-      </div>
+        <div class="footer-links">
+            <a href="#">وبلاگ</a>
+            <a href="#">درباره ما</a>
+            <a href="#">تماس با ما</a>
+        </div>
+        <div class="copyright">
+            کلیه حقوق مادی و معنوی این سامانه متعلق به دفتر ارزیابی و پایش حوزه هنری است © ۱۴۰۳
+        </div>
     </footer>
 
     <script>
-      document.querySelectorAll(".tile").forEach((tile) => {
-        tile.addEventListener("click", (e) => {
-          if (window.innerWidth <= 768) {
-            const isActive = tile.classList.contains("active");
-            document
-              .querySelectorAll(".tile")
-              .forEach((t) => t.classList.remove("active"));
-            if (!isActive) {
-              tile.classList.add("active");
-            }
-            e.stopPropagation();
-          }
-        });
-      });
-
-      document.addEventListener("click", (e) => {
-        if (window.innerWidth <= 768) {
-          if (!e.target.closest(".tile")) {
-            document.querySelectorAll(".tile").forEach((t) => {
-              t.classList.remove("active");
+        document.querySelectorAll(".tile").forEach((tile) => {
+            tile.addEventListener("click", (e) => {
+                if (window.innerWidth <= 768) {
+                    const isActive = tile.classList.contains("active");
+                    document.querySelectorAll(".tile").forEach((t) => t.classList.remove("active"));
+                    if (!isActive) {
+                        tile.classList.add("active");
+                    }
+                    e.stopPropagation();
+                }
             });
-          }
-        }
-      });
-
-      document.querySelectorAll(".tile").forEach((tile) => {
-        tile.addEventListener("mouseenter", () => {
-          if (window.innerWidth > 768) {
-            document
-              .querySelectorAll(".tile")
-              .forEach((t) => (t.style.zIndex = 1));
-            tile.style.zIndex = 2;
-          }
         });
-      });
+
+        document.addEventListener("click", (e) => {
+            if (window.innerWidth <= 768) {
+                if (!e.target.closest(".tile")) {
+                    document.querySelectorAll(".tile").forEach((t) => {
+                        t.classList.remove("active");
+                    });
+                }
+            }
+        });
+
+        document.querySelectorAll(".tile").forEach((tile) => {
+            tile.addEventListener("mouseenter", () => {
+                if (window.innerWidth > 768) {
+                    document.querySelectorAll(".tile").forEach((t) => (t.style.zIndex = 1));
+                    tile.style.zIndex = 2;
+                }
+            });
+        });
     </script>
-  </body>
+</body>
 </html>
