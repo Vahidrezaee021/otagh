@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>سامانه جامع اتاق وضعیت حوزه هنری انقلاب اسلامی</title>
+  <style>
+    @font-face {
+      font-family: "Vazir";
+      src: url("./fonts/Vazir-FD-WOL.woff") format("woff");
+      font-weight: normal;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "yekan";
+      src: url("./fonts/Yekan.woff") format("woff");
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Vazir", sans-serif;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: white;
+      transform: scale(1.08);
+      z-index: -1;
+      animation: backgroundZoom 20s infinite alternate;
+      filter: brightness(0.8);
+    }
+
+    @keyframes backgroundZoom {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1.15);
+      }
+    }
+
+    .header {
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+      padding: 0.8rem 2rem;
+      border-bottom: 2px solid #cf9c51;
+      flex-shrink: 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .logo-title-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      max-width: 1280px;
+      margin-right: 110px;
+    }
+
+    .header-logo img {
+      height: 90px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    }
+
+    .header h3 {
+      font-family: "yekan";
+      margin: 0;
+      font-weight: normal;
+      font-size: 1.8rem;
+      white-space: nowrap;
+      flex-grow: 1;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      color: #f4f4f4;
+      line-height: 1.3;
+    }
+
+    .main-content {
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+      padding: 1rem 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .message-container {
+      background: linear-gradient(145deg, rgba(0, 0, 0, 0.7), rgba(50, 25, 0, 0.6));
+      border-radius: 15px;
+      padding: 3rem 5rem;
+      text-align: center;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+      border: 2px solid #cf9c51;
+      backdrop-filter: blur(10px);
+      position: relative;
+      max-width: 80%;
+      animation: pulse 3s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(207, 156, 81, 0.5);
+      }
+      70% {
+        box-shadow: 0 0 0 20px rgba(207, 156, 81, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(207, 156, 81, 0);
+      }
+    }
+
+    .message-container::before {
+      content: "";
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      border-radius: 15px;
+      border: 2px solid transparent;
+      animation: borderGlow 2s infinite;
+      z-index: -1;
+    }
+
+    @keyframes borderGlow {
+      0% {
+        border-color: #cf9c51;
+      }
+      50% {
+        border-color: rgba(207, 156, 81, 0.4);
+      }
+      100% {
+        border-color: #cf9c51;
+      }
+    }
+
+    .main-message {
+      font-family: "yekan";
+      font-size: 3rem;
+      margin-bottom: 2rem;
+      color: #e8c27a;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      position: relative;
+      line-height: 1.4;
+    }
+
+    .sub-message {
+      font-size: 1.5rem;
+      color: #f0f0f0;
+      opacity: 0.9;
+      line-height: 1.6;
+      max-width: 600px;
+    }
+
+    .construction-icon {
+      font-size: 5rem;
+      margin-bottom: 2rem;
+      color: #cf9c51;
+      animation: rotate 8s infinite linear;
+    }
+
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .progress-container {
+      width: 100%;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 5px;
+      margin: 2rem auto;
+      overflow: hidden;
+      max-width: 500px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 65%;
+      background: linear-gradient(to right, #cf9c51, #e8c27a);
+      border-radius: 5px;
+      animation: progress 3s infinite alternate;
+    }
+
+    @keyframes progress {
+      0% { width: 60%; }
+      100% { width: 70%; }
+    }
+
+    .footer {
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+      padding: 0.8rem;
+      text-align: center;
+      flex-shrink: 0;
+      border-top: 2px solid #cf9c51;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      font-size: 0.9rem;
+      position: relative;
+    }
+
+    .footer-links a::after {
+      content: "";
+      position: absolute;
+      bottom: -3px;
+      right: 0;
+      width: 0;
+      height: 1.5px;
+      background: #cf9c51;
+      transition: width 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #cf9c51;
+    }
+
+    .footer-links a:hover::after {
+      width: 100%;
+    }
+
+    .copyright {
+      font-size: 0.75rem;
+      opacity: 0.8;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        padding: 0.6rem 1.5rem;
+      }
+
+      .logo-title-wrapper {
+        flex-direction: row;
+        gap: 0.8rem;
+        margin-right: 0;
+      }
+
+      .header-logo img {
+        height: 60px;
+      }
+
+      .header h3 {
+        font-size: 1rem;
+        white-space: normal;
+      }
+
+      .message-container {
+        padding: 2rem 1.5rem;
+        max-width: 90%;
+      }
+
+      .main-message {
+        font-size: 1.8rem;
+      }
+
+      .sub-message {
+        font-size: 1.1rem;
+      }
+
+      .construction-icon {
+        font-size: 3.5rem;
+      }
+
+      .footer-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo-title-wrapper">
+      <div class="header-logo">
+        <img src="./img/logo-hozee.png" alt="لوگو حوزه هنری" />
+      </div>
+      <h3>سامانه جامع اتاق وضعیت حوزه هنری انقلاب اسلامی</h3>
+    </div>
+  </header>
+
+  <div class="main-content">
+    <div class="message-container">
+      <div class="construction-icon">🚧</div>
+      <h2 class="main-message">سامانه در حال طراحی است</h2>
+      <p class="sub-message">از شکیبایی شما سپاسگزاریم</p>
+      
+      <div class="progress-container">
+        <div class="progress-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="#">وبلاگ</a>
+      <a href="./aboutUs.html">درباره ما</a>
+      <a href="./contactUs.html">تماس با ما</a>
+    </div>
+    <div class="copyright">
+      کلیه حقوق مادی و معنوی این سامانه متعلق به دفتر ارزیابی و پایش حوزه هنری است © ۱۴۰۳
+    </div>
+  </footer>
+</body>
+</html>

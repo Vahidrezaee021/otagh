@@ -216,6 +216,10 @@
         pointer-events: auto;
         border: 1px solid rgba(207, 156, 81, 0.3);
       }
+      .menu-item a {
+        color: white;
+        text-decoration: none;
+      }
 
       .tile:hover .menu-item {
         transform: translateX(0);
@@ -307,8 +311,8 @@
           width: 90%;
           right: 5%;
           top: calc(100% + 8px);
-          max-height: 50vh; /* محدودیت ارتفاع برای موبایل */
-          overflow-y: auto; /* اسکرول فقط در موبایل */
+          max-height: 50vh;
+          overflow-y: auto;
         }
       }
     </style>
@@ -334,7 +338,7 @@
               </div>
               <div class="menu-item" style="--i: 1">نمای آماری (داشبورد)</div>
               <div class="menu-item" style="--i: 2">
-                مخزن استعدادهای حوزه هنری
+                <a href="./comingSoon.html"> مخزن استعدادهای حوزه هنری </a>
               </div>
               <div class="menu-item" style="--i: 3">
                 آرشیو گزارش های حوزه هنری
@@ -352,15 +356,14 @@
                 مهرآوین (آرشیو محصولات رایگان حوزه هنری)
               </div>
               <div class="menu-item" style="--i: 2">
-                آرشیو دیجیتال تولیدات و محصولات حوزه هنری
+                <a href="./comingSoon.html">
+                  آرشیو دیجیتال تولیدات و محصولات حوزه هنری
+                </a>
               </div>
               <div class="menu-item" style="--i: 3">
-                آرشیو دیجیتال تولیدات و محصولات حوزه هنری
-              </div>
-              <div class="menu-item" style="--i: 4">
                 ویکی حوزه (دانشنامه برخط حوزه هنری)
               </div>
-              <div class="menu-item" style="--i: 5">
+              <div class="menu-item" style="--i: 4">
                 روند نما (تاریخ خطی حوزه هنری)
               </div>
             </div>
