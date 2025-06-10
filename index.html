@@ -187,8 +187,7 @@
       .desktop-menu {
         position: absolute;
         right: calc(100% + 25px);
-        top: 20px;
-        margin-top: 20px;
+        top: -10px;
         background-color: rgba(44, 62, 80, 0.95);
         border-radius: 12px;
         padding: 0.8rem;
@@ -210,6 +209,7 @@
         opacity: 1;
         transform: translateX(0);
         pointer-events: auto;
+        top: -10px;
       }
 
       .desktop-menu .menu-item {
@@ -464,6 +464,7 @@
           display: flex;
           max-height: 70vh;
           overflow-y: auto;
+          top: -10px;
         }
 
         .mobile-menu {
@@ -712,6 +713,9 @@
             const windowHeight = window.innerHeight;
 
             const spaceBelow = windowHeight - rect.bottom;
+            const spaceAbove = rect.top;
+
+            menu.style.top = "-10px";
 
             if (spaceBelow < menuHeight) {
               const spaceAbove = rect.top;
@@ -725,7 +729,7 @@
                 menu.style.maxHeight = spaceBelow + "px";
               }
             } else {
-              menu.style.top = "20px";
+              menu.style.top = "-10px";
               menu.style.bottom = "auto";
               menu.style.marginTop = "0";
               menu.style.marginBottom = "0";
@@ -737,15 +741,6 @@
         tile.addEventListener("mouseleave", () => {
           if (window.innerWidth > 768) {
             tile.style.zIndex = 1;
-
-            const menu = tile.querySelector(".desktop-menu");
-            if (!menu) return;
-
-            menu.style.top = "";
-            menu.style.bottom = "";
-            menu.style.marginTop = "";
-            menu.style.marginBottom = "";
-            menu.style.maxHeight = "70vh";
           }
         });
       });
