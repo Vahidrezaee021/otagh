@@ -506,11 +506,31 @@
           min-height: 70px;
           border-radius: 10px;
         }
+        .header h3 {
+          font-size: 1rem;
+          white-space: normal;
+        }
 
         .tile-text {
           font-size: 0.9rem;
           padding: 8px;
         }
+           body::before {
+          display: none;
+        }
+         body {
+        background: linear-gradient(to bottom, #e0e0e0, #c0c0c0);
+        animation: none;
+             
+        }
+         .logo-title-wrapper {
+        justify-content: center;
+        text-align: center;
+        flex-direction: column;
+        }
+          .header-logo img {
+    height: 100px; 
+  }
       }
 
       @media (max-width: 768px) and (max-height: 600px) {
@@ -548,14 +568,13 @@
 
             <div class="desktop-menu">
               <div class="menu-item" style="--i: 0">
-                سیماح (سامانه یکپارچه مدیریت اطلاعات حوزه هنری)
+              <a href="http://simah.hozehonari.ir/login" target="_blank">  سیماح (سامانه یکپارچه مدیریت اطلاعات حوزه هنری)</a>
               </div>
-              <div class="menu-item" style="--i: 1">نمای آماری (داشبورد)</div>
+              <div class="menu-item" style="--i: 1">
+                  <a href="http://dashboard.hozehonari.ir/reports/powerbi/نخست" target="_blank">نمای آماری (داشبورد) </a></div>
               <div class="menu-item" style="--i: 2">
-                <a href="./comingSoon.html"> مخزن استعدادهای حوزه هنری </a>
-              </div>
-              <div class="menu-item" style="--i: 3">
-                آرشیو گزارش های حوزه هنری
+                  
+                <a href="./comingSoon.html" target="_blank"> مخزن استعدادهای حوزه هنری </a>
               </div>
             </div>
           </div>
@@ -564,22 +583,26 @@
             <div class="tile-text">مدیریت محتوا و بروندادها</div>
 
             <div class="desktop-menu">
+                              <div class="menu-item" style="--i: 3">
+             <a href="http://reports.hozehonari.ir" target="_blank">آرشیو گزارش های حوزه هنری</a> 
+                </div>
               <div class="menu-item" style="--i: 0">
-                آرشیو اسناد سیاستی و راهبردی حوزه هنری
+                <a href="http://policydocs.hozehonari.ir" target="_blank">آرشیو اسناد سیاستی و راهبردی حوزه هنری</a>
               </div>
               <div class="menu-item" style="--i: 1">
-                مهرآوین (آرشیو محصولات رایگان حوزه هنری)
+                  <a href="http://mehravin.hozehonari.ir" target="_blank">آرشیو محصولات رایگان حوزه هنری (مهرآوین)</a>
+                
               </div>
               <div class="menu-item" style="--i: 2">
-                <a href="./comingSoon.html">
+                <a href="./comingSoon.html" target="_blank">
                   آرشیو دیجیتال تولیدات و محصولات حوزه هنری
                 </a>
               </div>
               <div class="menu-item" style="--i: 3">
-                ویکی حوزه (دانشنامه برخط حوزه هنری)
-              </div>
+        <a href="https://wiki.hozehonari.ir/" target="_blank">ویکی حوزه (دانشنامه برخط حوزه هنری)</a> 
+                  </div>
               <div class="menu-item" style="--i: 4">
-                روند نما (تاریخ خطی حوزه هنری)
+            <a href="https://timeline.hozehonari.ir/" target="_blank">روندنما (تاریخ خطی حوزه هنری)</a>
               </div>
             </div>
           </div>
@@ -589,11 +612,11 @@
 
             <div class="desktop-menu">
               <div class="menu-item" style="--i: 0">
-                راهکاران سیستم (سامانه مالی، اداری و پشتیبانی)
+                <a href="https://rahkaran.hozehonari.ir/hozehonari3g/x502a503c/Authentication/Login.aspx?ReturnUrl=%2fhozehonari3g%2fx502a503c%2f" target="_blank">راهکاران سیستم (سامانه مالی،اداری و پشتیبانی)</a>
               </div>
               <div class="menu-item" style="--i: 1">
-                سمین (سامانه قراردادهای حوزه هنری)
-              </div>
+                <a href="https://samin.hozehonari.ir/" target="_blank">سمین (سامانه قراردادهای حوزه هنری)</a>
+                              </div>
             </div>
           </div>
         </div>
@@ -609,12 +632,9 @@
             سیماح (سامانه یکپارچه مدیریت اطلاعات حوزه هنری)
           </a>
         </div>
-        <div class="menu-item">نمای آماری (داشبورد)</div>
+        <div class="menu-item"><a href="http://dashboard.hozehonari.ir/reports/powerbi/نخست" target="_blank">نمای آماری (داشبورد) </div>
         <div class="menu-item">
           <a href="./comingSoon.html"> مخزن استعدادهای حوزه هنری </a>
-        </div>
-        <div class="menu-item">
-          <a href="https://reports.hozehonari.ir">آرشیو گزارش های حوزه هنری</a>
         </div>
       </div>
 
@@ -623,6 +643,9 @@
           <div class="menu-title">مدیریت محتوا و بروندادها</div>
           <button class="close-menu">×</button>
         </div>
+         <div class="menu-item">
+          <a href="https://reports.hozehonari.ir">آرشیو گزارش های حوزه هنری</a>
+        </div>
         <div class="menu-item">
           <a href="https://policyducs.hozehonari.ir"
             >آرشیو اسناد سیاستی و راهبردی حوزه هنری</a
@@ -630,7 +653,7 @@
         </div>
         <div class="menu-item">
           <a href="https://mehravin.hozehonari.ir"
-            >مهرآوین (آرشیو محصولات رایگان حوزه هنری)</a
+            >آرشیو محصولات رایگان حوزه هنری (مهرآوین)</a
           >
         </div>
         <div class="menu-item">
@@ -638,8 +661,8 @@
             آرشیو دیجیتال تولیدات و محصولات حوزه هنری
           </a>
         </div>
-        <div class="menu-item">ویکی حوزه (دانشنامه برخط حوزه هنری)</div>
-        <div class="menu-item">روند نما (تاریخ خطی حوزه هنری)</div>
+        <div class="menu-item"><a href="https://wiki.hozehonari.ir">ویکی حوزه (دانشنامه برخط حوزه هنری)</a></div>
+        <div class="menu-item"><a href="https://timeline.hozehonari.ir/">روند نما (تاریخ خطی حوزه هنری)</a></div>
       </div>
 
       <div class="mobile-menu" id="menu3">
@@ -648,9 +671,10 @@
           <button class="close-menu">×</button>
         </div>
         <div class="menu-item">
-          راهکاران سیستم (سامانه مالی، اداری و پشتیبانی)
+          <a href="https://rahkaran.hozehonari.ir/hozehonari3g/x502a503c/Authentication/Login.aspx?ReturnUrl=%2fhozehonari3g%2fx502a503c%2f" target="_blank">راهکاران سیستم (سامانه مالی،اداری و پشتیبانی)<
         </div>
-        <div class="menu-item">سمین (سامانه قراردادهای حوزه هنری)</div>
+        <div class="menu-item">
+                <a href="https://samin.hozehonari.ir/" target="_blank">سمین (سامانه قراردادهای حوزه هنری)</div>
       </div>
 
       <div class="overlay"></div>
