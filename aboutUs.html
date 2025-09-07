@@ -198,13 +198,21 @@
         box-shadow: 0 8px 20px rgba(207, 156, 81, 0.3);
       }
 
-      .member-image {
+      .member-image-container {
         width: 150px;
         height: 150px;
-        border-radius: 50%;
-        object-fit: cover;
         margin: 0 auto 1.5rem;
+        border-radius: 50%;
+        overflow: hidden;
         border: 2px solid #cf9c51;
+      }
+
+      .member-image {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        object-position: top center;
+        display: block;
         filter: grayscale(100%);
         transition: all 0.4s ease;
       }
@@ -400,27 +408,37 @@
 
         <div class="team-members new-members-design">
           <div class="member-card">
-            <img src="img/team1.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team1.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">دکتر داود ضامنی</h3>
             <p class="member-position">مدیرکل دفتر ارزیابی و پایش</p>
           </div>
           <div class="member-card">
-            <img src="img/keramati.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/keramati.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">دکتر ودود کرامتی</h3>
             <p class="member-position">مدیر پروژه اتاق وضعیت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">محمدرضا کاظمی ابدی</h3>
             <p class="member-position">مسئول سامانه سیماح</p>
           </div>
           <div class="member-card">
-            <img src="img/team4.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team4.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">فریده عطایی</h3>
             <p class="member-position">ادمین سامانه سیماح</p>
           </div>
           <div class="member-card">
-            <img src="img/team4.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team4.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">کبری صحراگرد</h3>
             <p class="member-position">ادمین سامانه سیماح</p>
           </div>
@@ -429,27 +447,37 @@
 
         <div class="team-members new-members-design">
           <div class="member-card">
-            <img src="img/mousavi.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/mousavi.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">دکتر سیدمحسن موسوی</h3>
             <p class="member-position">مدیر ارشد تیم برنامه نویسی</p>
           </div>
           <div class="member-card">
-            <img src="img/hatami.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/hatami.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">مهندس محمد حاتمی</h3>
             <p class="member-position">برنامه نویس ارشد</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">مهندس حمید صالح</h3>
             <p class="member-position">مسئول امنیت شبکه و سرورها</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">مهندس مهدی شریفی</h3>
             <p class="member-position">مسئول فنی و انفورماتیک</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">مهندس وحید رضایی</h3>
             <p class="member-position">مسئول وبلاگ اتاق وضعیت</p>
           </div>
@@ -459,242 +487,331 @@
         <h2 class="team-title">رابطین</h2>
         <div class="team-members">
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">مسعود همتیان</h3>
             <p class="member-position">رابط مرکز هنرهای نمایشی</p>
           </div>
           <div class="member-card">
-            <img src="img/team4.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team4.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">بهناز باقرپور</h3>
             <p class="member-position">رابط دفتر هنر و ادبیات پایداری</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">محمود توسلیان</h3>
             <p class="member-position">رابط دفتر پاسداشت زبان فارسی</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">مهدی منصوری کاسوائی</h3>
             <p class="member-position">رابط دفتر طنز</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>
           <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
-            <h3 class="member-name">نام رابط</h3>
-            <p class="member-position">سمت</p>
-          </div>
-          <div class="member-card">
-            <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            <div class="member-image-container">
+              <img src="img/team2.jpg" alt="عضو تیم" class="member-image" />
+            </div>
             <h3 class="member-name">نام رابط</h3>
             <p class="member-position">سمت</p>
           </div>

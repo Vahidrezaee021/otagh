@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>سامانه جامع اتاق وضعیت حوزه هنری انقلاب اسلامی</title>
+    <style>
+      @font-face {
+        font-family: "Vazir";
+        src: url("fonts/Vazir-FD-WOL.woff") format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "yekan";
+        src: url("fonts/Yekan.woff") format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Vazir", sans-serif;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+        position: relative;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("img/12345.JPG") center/cover;
+        transform: scale(1.08);
+        z-index: -1;
+        animation: backgroundZoom 20s infinite alternate;
+        filter: brightness(0.8);
+      }
+
+      @keyframes backgroundZoom {
+        0% {
+          transform: scale(1);
+        }
+        100% {
+          transform: scale(1.15);
+        }
+      }
+      .header {
+        background-color: rgba(0, 0, 0, 0.6);
+        color: white;
+        padding: 0.8rem 1rem;
+        border-bottom: 2px solid #cf9c51;
+        flex-shrink: 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .logo-title-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        margin: 0 auto;
+        max-width: 100%;
+      }
+
+      .header-logo img {
+        height: 60px;
+        width: auto;
+        object-fit: contain;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+      }
+
+      .header h3 {
+        font-family: "yekan";
+        margin: 0;
+        font-weight: normal;
+        font-size: 0.9rem;
+        flex-grow: 1;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        color: #f4f4f4;
+        line-height: 1.5;
+      }
+
+      .main-content {
+        flex: 1;
+        overflow: hidden;
+        position: relative;
+        padding: 0.5rem 0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .tile-container {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        margin: 0 0 2rem;
+        overflow-y: auto;
+      }
+
+      .tiles-wrapper {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+        width: 100%;
+        max-width: 400px;
+        padding: 1.5rem 1rem;
+      }
+
+      .tile {
+        width: 100%;
+        min-height: 85px;
+        background-color: rgba(0, 0, 0, 0.6);
+        border-radius: 12px;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        border: 2px solid #cf9c51;
+        backdrop-filter: blur(8px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        text-decoration: none;
+      }
+
+      .tile:hover {
+        transform: scale(1.03);
+        box-shadow: 0 8px 24px rgba(207, 156, 81, 0.6);
+      }
+
+      .tile::after {
+        content: "";
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        border-radius: 12px;
+        border: 2px solid transparent;
+        animation: borderGlow 2s infinite;
+      }
+
+      @keyframes borderGlow {
+        0% {
+          border-color: #cf9c51;
+        }
+        50% {
+          border-color: rgba(207, 156, 81, 0.4);
+        }
+        100% {
+          border-color: #cf9c51;
+        }
+      }
+
+      .tile-text {
+        color: white;
+        font-size: 1rem;
+        padding: 12px;
+        text-align: center;
+        z-index: 2;
+        line-height: 1.5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 65px;
+      }
+
+      .footer {
+        background-color: rgba(0, 0, 0, 0.6);
+        color: white;
+        padding: 0.8rem;
+        text-align: center;
+        flex-shrink: 0;
+        border-top: 2px solid #cf9c51;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+        z-index: 1;
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 1.2rem;
+        margin-bottom: 0.6rem;
+        flex-wrap: wrap;
+      }
+
+      .footer-links a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        font-size: 0.85rem;
+        position: relative;
+      }
+
+      .footer-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -3px;
+        right: 0;
+        width: 0;
+        height: 1.5px;
+        background: #cf9c51;
+        transition: width 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: #cf9c51;
+      }
+
+      .footer-links a.active {
+        color: #cf9c51;
+      }
+
+      .footer-links a.active::after {
+        width: 100%;
+      }
+
+      .footer-links a:hover::after {
+        width: 100%;
+      }
+
+      .copyright {
+        font-size: 0.9rem;
+        opacity: 0.8;
+        line-height: 1.5;
+      }
+
+      @media (min-width: 769px) {
+        .header {
+          padding: 0.8rem 2rem;
+        }
+
+        .logo-title-wrapper {
+          max-width: 1280px;
+          margin-right: 110px;
+          gap: 1rem;
+        }
+
+        .header-logo img {
+          height: 90px;
+        }
+
+        .header h3 {
+          font-size: 1.8rem;
+          white-space: nowrap;
+        }
+
+        .tile-container {
+          padding: 2rem;
+          margin-top: 3rem;
+          overflow-y: auto;
+        }
+
+        .tiles-wrapper {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 2rem;
+          max-width: 800px;
+          padding: 0;
+        }
+
+        .tile {
+          width: 280px;
+          height: 100px;
+          min-height: auto;
+          display: block;
+          padding: 0;
+        }
+
+        .tile:hover {
+          transform: scale(1.05);
+        }
+
+        .tile-text {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 100%;
+          min-height: auto;
+          display: block;
+          font-size: 1.2rem;
+          white-space: nowrap;
+        }
+      }
+
+      @media (min-width: 769px) and (max-width: 1024px) {
+        .tile-container {
+          padding: 1rem;
+          margin-top: 1rem;
+        }
+
+        .tiles-wrapper {
+          max-width: 700px;
+          gap: 1.5rem;
+        }
+
+        .tile {
+          width: 240px;
+          height: 90px;
+        }
+
+        .tile-text {
+          font-size: 1.1rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .tiles-wrapper {
+          padding-top: 3rem;
+          gap: 0.8rem;
+        }
+
+        .tile {
+          min-height: 70px;
+          border-radius: 10px;
+        }
+        .header h3 {
+          font-size: 1rem;
+          white-space: normal;
+        }
+
+        .tile-text {
+          font-size: 0.9rem;
+          padding: 8px;
+        }
+           body::before {
+          display: none;
+        }
+         body {
+        background: linear-gradient(to bottom, #e0e0e0, #c0c0c0);
+        animation: none;
+             
+        }
+         .logo-title-wrapper {
+        justify-content: center;
+        text-align: center;
+        flex-direction: column;
+        }
+          .header-logo img {
+    height: 100px; 
+  }
+      }
+
+      @media (max-width: 768px) and (max-height: 600px) {
+        .tiles-wrapper {
+          padding-top: 2rem;
+          gap: 0.6rem;
+        }
+
+        .tile {
+          min-height: 60px;
+        }
+
+        .tile-text {
+          font-size: 0.85rem;
+          padding: 6px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo-title-wrapper">
+        <div class="header-logo">
+          <img src="./img/logo-hozee.png" alt="لوگو حوزه هنری" />
+        </div>
+        <h3>سامانه جامع اتاق وضعیت حوزه هنری انقلاب اسلامی</h3>
+      </div>
+    </header>
+
+    <div class="main-content">
+      <div class="tile-container">
+        <div class="tiles-wrapper">
+          <a href="http://simah.hozehonari.ir/login" target="_blank" class="tile">
+            <div class="tile-text">مدیریت اطلاعات</div>
+          </a>
+
+          <a href="http://reports.hozehonari.ir" target="_blank" class="tile">
+            <div class="tile-text">مدیریت محتوا و بروندادها</div>
+          </a>
+
+          <a href="https://rahkaran.hozehonari.ir/hozehonari3g/x502a503c/Authentication/Login.aspx?ReturnUrl=%2fhozehonari3g%2fx502a503c%2f" target="_blank" class="tile">
+            <div class="tile-text">مدیریت مالی، اداری و پشتیبانی</div>
+          </a>
+          
+          <a href="#" target="_blank" class="tile">
+            <div class="tile-text">سامانه جدید</div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="#" class="active">صفحه اصلی</a>
+        <a href="#">وبلاگ</a>
+        <a href="./aboutUs.html">درباره ما</a>
+        <a href="./contactUs.html">تماس با ما</a>
+      </div>
+      <div class="copyright">
+        کلیه حقوق مادی و معنوی این سامانه متعلق به دفتر ارزیابی و پایش حوزه هنری
+        است © ۱۴۰۴
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const currentPage = "index.html";
+
+        document.querySelectorAll(".footer-links a").forEach((link) => {
+          if (link.textContent.trim() === "صفحه اصلی") {
+            link.classList.add("active");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
